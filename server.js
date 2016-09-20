@@ -34,7 +34,7 @@ mongoose.connection.on('error', function() {
   console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
   process.exit(1);
 });
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 4000);
 app.use(compression());
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -87,9 +87,9 @@ if (app.get('env') === 'production') {
   });
 }
 
-app.listen(4000);
-// app.listen(app.get('port'), function() {
-//   console.log('Express server listening on port ' + app.get('port'));
-// });
+// app.listen(4000);
+app.listen(app.get('port'), function() {
+  console.log('Express server listening on port ' + app.get('port'));
+});
 
-// module.exports = app;
+module.exports = app;
